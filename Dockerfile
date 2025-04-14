@@ -25,9 +25,12 @@ ENV DB_PASSWORD root
 ENV DB_NAME root
 ENV DB_PORT 5432
 
+
 COPY ./assets/ /app/assets/
 COPY ./templates/ /app/templates/
+COPY wait-for-postgres.sh /app/wait-for-postgres.sh
+RUN chmod +x /app/wait-for-postgres.sh
 
 COPY --from=build /app/main /app/main
 
-CMD ["./main"]
+CMD ["/app/wait-for-postgres.sh", "./main"]
