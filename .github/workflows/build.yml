@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: latest, ${{ github.sha }}
+          tags: arthurandrejozuk/docker-git-actions:latest arthurandrejozuk/projeto_go, ${{ github.sha }}
 
       - name: Projeto compilado
         uses: actions/upload-artifact@v4
